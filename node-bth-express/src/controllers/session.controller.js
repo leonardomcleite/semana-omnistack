@@ -3,7 +3,7 @@ const connection = require('../database/connection')
 module.exports = {
   async login(req, rsp) {
     const ong = await connection('ongs')
-      .where('id', req.headers.authorization)
+      .where('id', req.body.id)
       .select('name')
       .first()
 

@@ -6,8 +6,8 @@ module.exports = {
     const data = req.body;
     data.id = crypto.randomBytes(4).toString('HEX')
     console.log(data);
-    const [id] = await connection('ongs').insert(data)
-    return rsp.json({id})
+    await connection('ongs').insert(data)
+    return rsp.json({id: data.id})
   },
   async findAll(req, rsp) {
     const ongs = await connection('ongs').select('*')
