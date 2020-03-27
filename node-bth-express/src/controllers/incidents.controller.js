@@ -4,7 +4,6 @@ module.exports = {
   async create(req, rsp) {
     const data = req.body;
     data.ong_id = req.headers.authorization
-    console.log(data);
     const [id] = await connection('incidents').insert(data)
     return rsp.json({id})
   },

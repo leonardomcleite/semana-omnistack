@@ -1,11 +1,10 @@
 const connection = require('../database/connection')
-const crypto = require('crypto')
+const generateUniqueId = require('../utils/generateUniqueId')
 
 module.exports = {
   async create(req, rsp) {
     const data = req.body;
-    data.id = crypto.randomBytes(4).toString('HEX')
-    console.log(data);
+    data.id = generateUniqueId()
     await connection('ongs').insert(data)
     return rsp.json({id: data.id})
   },
