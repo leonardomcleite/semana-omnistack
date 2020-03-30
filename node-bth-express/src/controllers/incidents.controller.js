@@ -25,6 +25,7 @@ module.exports = {
       ])
 
     rsp.header('X-Total-Count', count['count(*)'])
+    rsp.header('Access-Control-Expose-Headers', 'X-Total-Count')
     return rsp.json(incidents)
   },
   async findById(req, rsp) {
